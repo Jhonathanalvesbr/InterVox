@@ -13,16 +13,18 @@ public class InterVox {
 
     public static void main(String[] args) throws InterruptedException {
 
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\admin\\Documents\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Jhonathan Alves\\Desktop\\chromedriver2.exe");
 
         WebDriver driver = new ChromeDriver();
         driver.get("https://www.intervox.pt/login");
-        
-       
+
+        Actions action = new Actions(driver);
+
         WebElement element = null;
         List<WebElement> elements = null;
         List<WebElement> links = null;
-        
+
+        Thread.sleep(3000);
         element = driver.findElement(By.xpath("//SPAN[@class='sc-bwzfXH eJuetI']"));
         element.click();
         String html = driver.getPageSource();
@@ -36,78 +38,113 @@ public class InterVox {
         password.sendKeys("32106478");
         WebElement botao = driver.findElement(By.xpath("//button[@type='submit' and contains(., 'Entrar')]"));
         botao.click();
-        
-        elements = driver.findElements(By.xpath("//BUTTON[@type='button']/self::BUTTON"));
-        for (WebElement e : elements) {
-            if(e.getText().equals("TOPIC")){
-                e.click();
-                break;
-            }
-        }
-        
-        /*links = driver.findElements(By.xpath("//LI[@class='px-2 py-2 pointer hover:bg-gray-200 text-sm']"));
-        links.get(0).click();
-        
-        elements = driver.findElements(By.xpath("//a[contains(@href,'topic_albums')]"));
-        for (WebElement e : elements) {
-            e.click();
-            break;
-        }
-        Thread.sleep(5000);
-        
-        links = driver.findElements(By.xpath("//BUTTON[contains(@class,'')]"));
-        links.get(0).click();
-        Thread.sleep(5000);
-        Actions action = new Actions(driver);
-        action.sendKeys(Keys.END).build().perform();
-        Thread.sleep(3000);
-        action.sendKeys(Keys.END).build().perform();
-        
-        links = driver.findElements(By.xpath("//a[contains(@href,'tracks')]"));
-        
-        element = links.get(0);
-        element.click();
-        
-        /*
-        elements = driver.findElements(By.xpath("//BUTTON[@type='button']/self::BUTTON"));
-        for (WebElement e : elements) {
-            if(e.getText().equals("TOPIC")){
-                e.click();
-                break;
-            }
-        }
-        
-        elements = driver.findElements(By.xpath("//div[@class='flex flex-row flex-wrap items-start content-start w-full mb-10 xl:pt-10']"));
-        for (WebElement e : elements) {
-            System.out.println(e.getText());
-            e.click();
-            break;
-        }
-        
-        
-        
-        
-        //x = html.indexOf("field-remember_checkbox");
-        //String lbl = html.substring(x, x + 37);
 
-        // Get all the elements available with tag name 'p'
-        
-        
-        /*WebElement element = null;
+        Thread.sleep(3000);
+        //driver.navigate().back();
+
         element = driver.findElement(By.tagName("div"));
-        List<WebElement> elements = null;
         elements = element.findElements(By.tagName("button"));
         for (WebElement e : elements) {
             if (e.getText().equals("TOPIC")) {
-                element = e;
+                e.click();
                 break;
             }
         }
-        
-        //element = driver.findElement(By.tagName("div"));
-        elements = driver.findElements(By.tagName("button"));
-        for (WebElement e : elements) {
+        Thread.sleep(3000);
+
+        links = driver.findElements(By.xpath("//LI[@class='px-2 py-2 pointer hover:bg-gray-200 text-sm']"));
+        links.get(0).click();
+        Thread.sleep(3000);
+
+        List<WebElement> temas = null;
+        temas = driver.findElements(By.xpath("//a[contains(@href,'topic_albums')]"));
+
+        for (int j = 0; j < temas.size(); j++) {
+            temas.get(j).click();
+            System.out.println("--" + temas.get(j).getText() + "--");
+            /*for (WebElement e : elements) {
+            e.click();
             System.out.println(e.getText());
+            break;
         }*/
+            Thread.sleep(3000);
+            links = driver.findElements(By.xpath("//BUTTON[contains(@class,'')]"));
+            links.get(0).click();
+            Thread.sleep(3000);
+
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+
+            for (int i = 0; i < links.size(); i++) {
+                links = driver.findElements(By.xpath("//a[contains(@href,'tracks')]"));
+
+                element = links.get(i);
+                element.click();
+
+                Thread.sleep(3000);
+
+                elements = driver.findElements(By.xpath("//a[contains(@href,'download_zip')]"));
+                for (WebElement e : elements) {
+                    System.out.println(driver.findElement(By.xpath("//DIV[@class='items-center']")).getText() + ";" + e.getAttribute("href") + ".zip");
+                }
+
+                driver.navigate().back();
+                action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+
+            }
+            element = driver.findElement(By.tagName("div"));
+            elements = element.findElements(By.tagName("button"));
+            for (WebElement e : elements) {
+                if (e.getText().equals("TOPIC")) {
+                    e.click();
+                    break;
+                }
+            }
+            Thread.sleep(3000);
+
+            links = driver.findElements(By.xpath("//LI[@class='px-2 py-2 pointer hover:bg-gray-200 text-sm']"));
+            links.get(0).click();
+            Thread.sleep(3000);
+
+            temas = driver.findElements(By.xpath("//a[contains(@href,'topic_albums')]"));
+
+        }
     }
 }
