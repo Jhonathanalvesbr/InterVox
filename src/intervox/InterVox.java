@@ -19,7 +19,9 @@ public class InterVox {
         driver.get("https://www.intervox.pt/login");
 
         Actions action = new Actions(driver);
-
+        
+        //Thread.sleep(10000);
+        
         WebElement element = null;
         List<WebElement> elements = null;
         List<WebElement> links = null;
@@ -58,8 +60,14 @@ public class InterVox {
 
         List<WebElement> temas = null;
         temas = driver.findElements(By.xpath("//a[contains(@href,'topic_albums')]"));
-
-        for (int j = 0; j < temas.size(); j++) {
+        Thread.sleep(1000);
+        action.sendKeys(Keys.END).build().perform();
+        for (int j = 24; j < temas.size(); j++) {
+            temas = driver.findElements(By.xpath("//a[contains(@href,'topic_albums')]"));
+            Thread.sleep(3000);
+            action.sendKeys(Keys.END).build().perform();
+            Thread.sleep(1000);
+            action.sendKeys(Keys.END).build().perform();
             temas.get(j).click();
             System.out.println("--" + temas.get(j).getText() + "--");
             /*for (WebElement e : elements) {
